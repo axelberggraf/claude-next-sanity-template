@@ -35,6 +35,8 @@ Copy `.env.local.example` to `.env.local` and fill in values before running:
 
 **Styling** (`styles/`): Global SCSS only — no CSS Modules, no Tailwind. Import order: `_variables.scss` → `_mixins.scss` → `globals.scss`. `globals.scss` is imported once in `app/layout.tsx`. Components use plain `className="my-class"` strings pointing to global classes.
 
+**Fonts** (`app/fonts/`): Local font files (woff2). Loaded via `next/font/local` in `app/layout.tsx`, which sets a `--font-primary` CSS variable on `<html>`. Referenced in SCSS as `$font-primary: var(--font-primary), system-ui, sans-serif` in `styles/_variables.scss`. To swap fonts: drop the new woff2 into `app/fonts/` and update the `src` in `layout.tsx`.
+
 **Images**: Sanity CDN images are served via `cdn.sanity.io` (allowed in `next.config.ts`). Use `urlFor(image).width(800).url()` to build URLs.
 
 ## Node.js
